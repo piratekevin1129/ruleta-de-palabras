@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    
+    <!--Estilos propios-->
+    <link href="assets/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/cargador.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/instrucciones.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/modal.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/header.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/master.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!--<link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />-->
+
+    <script>
+        var titulo_final = ''
+        var titulo_final_mal = ''
+        var mensaje_final = ''
+        var mensaje_final_mal = ''
+        var titulo_instrucciones = ''
+        var mensaje_instrucciones = ''
+        var numero_intentos = 0
+    </script>
+    <title>Ruleta de palabras</title>
+</head>
+<body>
+    <div id="tra_contenedor">
+        <audio id="underground_mp3" onended="repeatUnderground()">
+            <source src="assets/media/electronic_lizard_uplifting_light.mp3" type="audio/mp3" />
+        </audio>
+
+        <div id="tra_body">
+            <div class="rulette-row">
+                <div id="rulette" class="rulette-out rulette-on">
+                    <div id="rulette-letter-parent">
+                        <canvas id="rulette-letter" class="rulette-letter-off" width="300" height="300"></canvas>
+                    </div>
+                    <div id="rulette-letras"></div>
+                </div>
+
+                <div id="informacion" class="informacion-off">
+                    <h2 id="informacion-title">Empieza por la <span>A</span></h2>
+                    <p id="informacion-description">Mueble con puertas y estantes o perchas para guardar otros objetos</p>
+                    <div id="palabra-input-cont">
+                        <div id="palabra-input-lines">
+                            <div class="palabra-input-line1"></div>
+                            <div class="palabra-input-line2"></div>
+                            <div class="palabra-input-line3"></div>
+                            <div class="palabra-input-line4"></div>
+                            <div class="palabra-input-line5"></div>
+                            <div class="palabra-input-line6"></div>
+                        </div>
+                        <input type="text" name="palabra-input" id="palabra-input" autocomplete="off" maxlength="100" onfocus="focusPalabra()" onblur="blurPalabra()" />
+                    </div>
+                    <div class="informaicon-buttons">
+                        <button id="saltar-btn" class="saltar-btn-unlocked" onclick="saltarPalabra()">Saltar</button>
+                        <button id="comprobar-btn" onclick="comprobarPalabra()">Comprobar</button>
+                    </div>
+                </div>
+
+                <div id="tabla" class="tabla-off">
+                    <p id="tabla-msg">Has completado esta actividad<br /><br />Estos son los resultados</p>
+                    <br />
+                    <div id="tabla-stats">
+                        <!---->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal" class="modal-off">
+            <div id="modal-msg">
+                <div id="modal-icon-msg" class="modal-icon-msg-error"></div>
+                <div id="modal-text-msg">
+                    <p>Lorem Ipsu</p>
+                    <button class="modal-continue-btn"></button>
+                </div>
+                <div id="modal-close-msg" onclick="unsetModal()"></div>
+            </div>
+        </div>
+
+        <div id="instrucciones" class="instrucciones-off">
+            <div id="instrucciones-box">
+                <div id="instrucciones-box-wrap">
+                    <h4 id="instrucciones_title"></h4><!--titulo-->
+                    <div id="instrucciones-close-btn" onclick="closeInstrucciones()"></div>
+                    
+                    <p id="instrucciones_txt"></p><!--Texto introductorio personalizado-->
+                    <p id="instrucciones_inst"></p><!--Texto por defecto de las instrucciones-->
+                    <div id="instrucciones-gif">
+                        <!--aqui va html del gif animado con css--> 
+                    </div>
+                    <p>Haz clic en <span>Comprobar</span> para verificar si la palabra es correcta, Si no sabes la palabra puedes dar clic en <span>Saltar</span> y responder más tarde.</p>
+                    <!--<p>Tienes <span id="intentos_txt"></span> oportunidades.</p>
+                    <div class="instrucciones-starts">
+                        <div class="instrucciones-star"></div>
+                        <div class="instrucciones-star"></div>
+                        <div class="instrucciones-star"></div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+
+        <div id="tra_header">
+            <div class="tra_header_title">
+                <div class="tra_header_title_txt">Ruleta <span>de palabras</span></div>
+            </div>
+            <div class="tra_header_toolbar">
+                <div class="tra_header_nav">
+                    <div id="tra_record_col">
+                        <p id="tra_record_txt">00:00</p>
+                        <h6>Mejor tiempo</h6>
+                    </div>
+                    <div id="tra_tiempo_col">
+                        <p id="tra_tiempo_txt">00:00</p>
+                        <h6>Tiempo</h6>
+                    </div>
+                    <div id="tra_ayuda_col">
+                        <section></section>
+                        <div onclick="openInstrucciones()"></div>
+                        <p>Instrucciones</p>
+                    </div>
+                    <div id="tra_reload_col">
+                        <section></section>
+                        <div onclick="reloadGame()"></div>
+                        <p>Reiniciar el juego</p>
+                    </div>
+                    <div id="tra_music_col" class="tra_music_off">
+                        <section></section>
+                        <div onclick="toggleAudio()"></div>
+                        <p>Silenciar</p>
+                    </div>
+                </div>
+                <div id="tra_estrellas">
+                    <div class="tra_estrella tra_estrella_off"></div>
+                    <div class="tra_estrella tra_estrella_off"></div>
+                    <div class="tra_estrella tra_estrella_off"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="cargador" class="cargador-on">
+            <div id="cargador-txt">Cargando...</div>
+        </div>
+    </div>
+</body>
+
+<script src="assets/js/mobile.js"></script>
+<script src="assets/js/tools.js"></script>
+<script src="assets/js/scorm.js"></script>
+<script src="assets/js/game.js"></script>
+<script>
+
+prepareWindow()
+
+/*var drag_mp3 = null
+var incorrect_mp3 = null
+var remove_mp3 = null
+var victoria_mp3 = null
+var button_mp3 = null*/
+var correcto_mp3 = null
+var incorrecto_mp3 = null
+var over_letra_mp3 = null
+var over_letra_mp4 = null
+var ruleta_effect = null
+
+var global_data = null
+window.onload = function(){
+    $.getJSON("assets/db.json?option=getTime&bogus="+(Math.random()*100), function(json) {
+        //console.log(json); // this will show the info it in firebug console
+        global_data = json
+
+        loadAudio({src:'assets/media/letra_over_2.mp3',callBack:function(data){
+        over_letra_mp3 = data
+        over_letra_mp4 = data
+        loadAudio({src:'assets/media/error.mp3',callBack:function(data){
+        incorrecto_mp3 = data
+        loadAudio({src:'assets/media/correcto.mp3',callBack:function(data){
+        correcto_mp3 = data
+        loadAudio({src:'assets/media/ruleta_background.mp3',callBack:function(data){
+        ruleta_effect = data
+        /*loadAudio({src:'assets/media/victoria.mp3',callBack:function(data){
+        victoria_mp3 = data
+        loadAudio({src:'assets/media/button.mp3',callBack:function(data){
+        button_mp3 = data
+        loadAudio({src:'assets/media/over.mp3',callBack:function(data){
+        over_mp3 = data*/
+        
+            //initScorm()
+
+            document.getElementById('tra_record_col').style.visibility = 'hidden'
+            initGame()
+
+        /*}})
+        }})*/
+        }})
+        }})
+        }})
+        }})
+    });
+}
+
+
+var cargador = document.getElementById('cargador')
+var instrucciones = document.getElementById('instrucciones')
+var animacion_init = null
+
+function initGame(){
+    //print all data
+    titulo_final = global_data.titulo_final
+    mensaje_final = global_data.mensaje_final
+    titulo_final_mal = global_data.titulo_final_mal
+    mensaje_final_mal = global_data.mensaje_final_mal
+    titulo_instrucciones = global_data.titulo_instrucciones
+    mensaje_instrucciones = global_data.mensaje_instrucciones
+    numero_intentos = global_data.numero_intentos
+    getE('instrucciones_title').innerHTML = titulo_instrucciones
+    getE('instrucciones_txt').innerHTML = mensaje_instrucciones
+    //getE('intentos_txt').innerHTML = numero_intentos
+
+    getE('instrucciones_txt').innerHTML = mensaje_instrucciones
+    
+    animacion_init = setTimeout(function(){
+        clearTimeout(animacion_init)
+        animacion_init = null
+
+        cargador.className = 'cargador-off'
+        instrucciones.className = 'instrucciones-on'
+        setGame()
+    },1000)
+}
+
+
+var toggle_audio = false
+var toggle_audio_volume = 0
+function toggleAudio(){
+    if(toggle_audio){
+        toggle_audio = false
+        toggle_audio_volume = 0
+        document.getElementById('tra_music_col').className = 'tra_music_off'
+    }else{
+        toggle_audio = true
+        toggle_audio_volume = 0.3
+        document.getElementById('tra_music_col').className = 'tra_music_on'
+    }
+    underground_mp3.volume = toggle_audio_volume
+}
+function repeatUnderground(){
+    underground_mp3.volume = toggle_audio_volume
+    underground_mp3.play()
+}
+var underground_mp3 = document.getElementById('underground_mp3')
+underground_mp3.volume = toggle_audio_volume
+
+</script>
+</body>
+
+
+</html>
