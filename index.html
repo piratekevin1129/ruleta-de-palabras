@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html translate="no" lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,6 +50,7 @@
                     <h2 id="informacion-title">Empieza por la <span>A</span></h2>
                     <p id="informacion-description">Mueble con puertas y estantes o perchas para guardar otros objetos</p>
                     <div id="palabra-input-cont">
+                        <p id="error_txt" class="error_txt_off">Por favor escribe una respuesta válida</p>
                         <div id="palabra-input-lines">
                             <div class="palabra-input-line1"></div>
                             <div class="palabra-input-line2"></div>
@@ -58,7 +59,7 @@
                             <div class="palabra-input-line5"></div>
                             <div class="palabra-input-line6"></div>
                         </div>
-                        <input type="text" name="palabra-input" id="palabra-input" autocomplete="off" maxlength="100" onfocus="focusPalabra()" onblur="blurPalabra()" />
+                        <input type="text" name="palabra-input" id="palabra-input" autocomplete="off" maxlength="100" onfocus="focusPalabra()" onblur="blurPalabra()" onkeyup="keyupPalabra(this)" />
                     </div>
                     <div class="informaicon-buttons">
                         <button id="saltar-btn" class="saltar-btn-unlocked" onclick="saltarPalabra()">Saltar</button>
@@ -97,6 +98,18 @@
                     <p id="instrucciones_inst"></p><!--Texto por defecto de las instrucciones-->
                     <div id="instrucciones-gif">
                         <!--aqui va html del gif animado con css--> 
+                        <div class="demo-ruleta">
+                            <div class="demo-ruleta-l1">A</div>
+                            <div class="demo-ruleta-l2">B</div>
+                            <div class="demo-ruleta-l3">C</div>
+                            <div class="demo-ruleta-l4">D</div>
+                            <div class="demo-ruleta-l5">E</div>
+                            <div class="demo-ruleta-l6">F</div>
+                            <div class="demo-ruleta-l7">G</div>
+                        </div>
+                        <div class="demo-info">
+                            <
+                        </div>
                     </div>
                     <p>Haz clic en <span>Comprobar</span> para verificar si la palabra es correcta, Si no sabes la palabra puedes dar clic en <span>Saltar</span> y responder más tarde.</p>
                     <!--<p>Tienes <span id="intentos_txt"></span> oportunidades.</p>

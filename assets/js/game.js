@@ -113,6 +113,7 @@ function rodarRuleta(){
 	//console.log(frame,delay)
 	if(frame==delay){
 		if(!sonido_ruleta){
+			ruleta_effect.volume = 1
 			ruleta_effect.currentTime = 0
 			ruleta_effect.play()
 			sonido_ruleta = true
@@ -166,7 +167,7 @@ var canvas = getE('rulette-letter')
 var ctx = canvas.getContext('2d');
 
 function setPregunta(){
-	ruleta_effect.pause()
+	pauseRuletaSound()
 
 	letras_ruleta[letra_aleatoria].classList.remove('rulette-letra-icon-over')
 	letras_ruleta[letra_aleatoria].classList.add('rulette-letra-icon-active')
@@ -195,6 +196,20 @@ function setPregunta(){
 	},1000)
 }
 
+var animacion_ruleta_sound = null
+function pauseRuletaSound(){
+	var vol_ruleta = 1
+	animacion_ruleta_sound = setInterval(function(){
+		vol_ruleta-=0.2
+		if(vol_ruleta<0){
+			clearInterval(animacion_ruleta_sound)
+			animacion_ruleta_sound = null
+		}else{
+			ruleta_effect.volume = vol_ruleta
+		}
+	},100)
+}
+
 var saltar_btn = getE('saltar-btn')
 var comprobar_btn = getE('comprobar-btn')
 saltar_btn.disabled = true
@@ -215,41 +230,84 @@ function saltarPalabra(){
 		}
 	}
 	
-	continueRuleta()
+	continueRuleta(false)
 }
 
+var intentos = 0
 function comprobarPalabra(){
-	//bloquear botones
-	saltar_btn.disabled = true
-	comprobar_btn.disabled = true
+	var value_0 = getE('palabra-input').value
+	var value_1 = value_0.trim().toLowerCase()
+	var value_2 = removeAcentos(value_1)
 
-	var value = getE('palabra-input').value
-	var value_1 = palabras_ruleta[letra_aleatoria].palabra
-	if(value_1.toLowerCase()==value.toLowerCase()){
-		//aprobar
-		correcto_mp3.play()
-		letras_ruleta_aprobadas.push(letra_aleatoria)
-		letras_ruleta[letra_aleatoria].classList.remove('rulette-letra-icon-active')
-		letras_ruleta[letra_aleatoria].classList.add('rulette-letra-icon-approved')
+	if(value_2==""){
+		getE('error_txt').className = 'error_txt_on'
 	}else{
-		//reprobar
-		incorrecto_mp3.play()
-		palabras_ruleta[letra_aleatoria].respuesta = value
-		letras_ruleta_reprobadas.push(letra_aleatoria)
-		letras_ruleta[letra_aleatoria].classList.remove('rulette-letra-icon-active')
-		letras_ruleta[letra_aleatoria].classList.add('rulette-letra-icon-failed')
-	}
+		//bloquear botones
+		saltar_btn.disabled = true
+		comprobar_btn.disabled = true
 
-	if(!terminado){
-		if(letras_ruleta_aprobadas.length+letras_ruleta_reprobadas.length+letras_ruleta_saltadas.length==letras_ruleta.length){
-			terminado = true
+		var is_word = false
+		var list = palabras_ruleta[letra_aleatoria].palabra
+		for(i = 0;i<list.length;i++){
+			var value_3 = list[i]
+			var value_4 = value_3.trim().toLowerCase()
+			var value_5 = removeAcentos(value_4)
+			if(value_5==value_2){
+				is_word = true
+			}
+		}
+
+		if(is_word){
+			//aprobar
+			correcto_mp3.play()
+			letras_ruleta_aprobadas.push(letra_aleatoria)
+			letras_ruleta[letra_aleatoria].classList.remove('rulette-letra-icon-active')
+			letras_ruleta[letra_aleatoria].classList.add('rulette-letra-icon-approved')
+			continueRuleta(true)
+		}else{
+			//reprobar
+			incorrecto_mp3.play()
+			palabras_ruleta[letra_aleatoria].respuesta = value_2
+			letras_ruleta_reprobadas.push(letra_aleatoria)
+			letras_ruleta[letra_aleatoria].classList.remove('rulette-letra-icon-active')
+			letras_ruleta[letra_aleatoria].classList.add('rulette-letra-icon-failed')
+
+			var stars = getE('tra_estrellas').getElementsByClassName('tra_estrella')
+			//quitar estrella
+			stars[intentos].classList.remove('tra_estrella_off')
+			stars[intentos].classList.add('tra_estrella_on')
+			
+			intentos++
+			$("html, body").animate({ scrollTop: $('#tra_body').offset().top }, 500);
+
+			if(intentos==numero_intentos){
+				pararReloj()
+				setModal({msg:'<span>'+titulo_final_mal+'</span> '+mensaje_final_mal+'<br />Puedes hacer clic en el botón <span>Reiniciar</span> para jugar de nuevo',close:true})
+			}{
+				continueRuleta(true)
+			}
+		}
+	}
+}
+
+function removeAcentos(str){
+	var str1 = str.replace(new RegExp('á','g'),'a')
+	var str2 = str1.replace(new RegExp('é','g'),'e')
+	var str3 = str2.replace(new RegExp('í','g'),'i')
+	var str4 = str3.replace(new RegExp('ó','g'),'o')
+	var str5 = str4.replace(new RegExp('ú','g'),'u')
+	return str5
+}
+
+function continueRuleta(check){
+	if(check){
+		if(!terminado){
+			if(letras_ruleta_aprobadas.length+letras_ruleta_reprobadas.length+letras_ruleta_saltadas.length==letras_ruleta.length){
+				terminado = true
+			}
 		}
 	}
 
-	continueRuleta()
-}
-
-function continueRuleta(){
 	getE('informacion').className = 'informacion-off'
 
 	if(letras_ruleta_saltadas.length==0&&terminado){
@@ -325,7 +383,7 @@ function setFinal(){
 	//fill tabla
 	for(i = 0;i<palabras_ruleta.length;i++){
 		var le = palabras_ruleta[i].letra
-		var pa = palabras_ruleta[i].palabra
+		var pas = palabras_ruleta[i].palabra
 		var des = palabras_ruleta[i].pista
 		var res = ''
 
@@ -345,7 +403,9 @@ function setFinal(){
             html+='<div class="tabla-stats-palabra-letra">'+le+'</div>'
             html+='<div class="tabla-stats-palabra-results">'
                 html+='<div class="tabla-stats-palabra-incorrect"><p>'+res+'</p></div>'
-                html+='<div class="tabla-stats-palabra-correct"><p>'+pa+'</p></div>'
+                for(j = 0;j<pas.length;j++){
+                	html+='<div class="tabla-stats-palabra-correct"><p>'+pas[j]+'</p></div>'
+                }
             html+='</div>'
         html+='</div>'
         html+='<div class="tabla-stats-palabra-body">'
@@ -378,6 +438,12 @@ function focusPalabra(){
 } 
 function blurPalabra(){
     getE('palabra-input-lines').className = 'palabra-input-lines-off'
+}
+function keyupPalabra(input){
+	var v = input.value
+	if(v.trim()!=""){
+		getE('error_txt').className = 'error_txt_off'
+	}
 }
 
 /**********MODALES***********/

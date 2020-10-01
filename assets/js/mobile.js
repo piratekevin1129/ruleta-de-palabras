@@ -1,4 +1,4 @@
-var instrucciones_inst_txt = 'Escribe la palabra que consideres correcta para cada letra que indique el juego'
+var instrucciones_inst_txt = 'Escribe la palabra correcta según la letra y la pista que indique el juego'
 var instrucciones_gif_txt = ''
 
 var ismobile = false
