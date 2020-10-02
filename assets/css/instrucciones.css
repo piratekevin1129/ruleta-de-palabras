@@ -131,7 +131,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-color: #f4f4f4;
+    background-color: #F9F9F9;
 }
 
 #instrucciones-box-wrap > p{
@@ -172,4 +172,151 @@
     background-size: contain;
     background-position: center;
     background-image: url(../images/star-icon.svg);
+}
+
+/*********GIF ANIMADO**********/
+.demo-ruleta{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    top: calc(50% - 50px);
+    top: -moz-calc(50% - 50px);
+    border-radius: 50%;
+    left: 20px;
+
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: #f69e06 solid 1px;
+}
+.demo-ruleta > div{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin: 0px;
+    padding: 0px;
+    background-color: #cccccc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    color: #444444;
+    text-align: center;
+    font-weight: normal;
+    line-height: normal;
+
+    transform: translateX(-10px) translateY(-10px);
+    -webkit-transform: translateX(-10px) translateY(-10px);
+    -o-transform: translateX(-10px) translateY(-10px);
+
+    animation-duration: 2s;
+    animation-iteration-count: 2;
+    animation-timing-function: linear;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-timing-function: linear;
+}
+
+.demo-ruleta-l1{
+    left: 50%;
+    top: 0px;
+    animation-name: animacion-letra-demo1;
+    -webkit-animation-name: animacion-letra-demo1;
+}
+.demo-ruleta-l2{
+    top: 25%;
+    left: 94%;
+    animation-name: animacion-letra-demo2;
+    -webkit-animation-name: animacion-letra-demo2;
+}
+.demo-ruleta-l3{
+    top: 75%;
+    left: 94%;
+    animation-name: animacion-letra-demo3;
+    -webkit-animation-name: animacion-letra-demo3;
+}
+.demo-ruleta-l4{
+    top: 100%;
+    left: 50%;
+    animation-name: animacion-letra-demo4;
+    -webkit-animation-name: animacion-letra-demo4;
+}
+.demo-ruleta-l5{
+    top: 75%;
+    left: 6%;
+    animation-name: animacion-letra-demo5;
+    -webkit-animation-name: animacion-letra-demo5;
+}
+.demo-ruleta-l6{
+    top: 25%;
+    left: 6%;
+    animation-name: animacion-letra-demo6;
+    -webkit-animation-name: animacion-letra-demo6;
+}
+
+.demo-info{
+    position: absolute;
+    width: 100%;
+    width: calc(100% - 160px);
+    width: -moz-calc(100% - 160px);
+    height: 150px;
+    margin: 0px;
+    padding: 0px;
+    right: 20px;
+}
+    
+.demo-info-input{
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    border: #FF6B00 solid 1px;
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+
+    top: 50%;
+    top: calc(50% - 25px);
+    top: -moz-calc(50% - 25px);
+    left: 0px;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+    color: #444444;
+    text-align: center;
+    line-height: normal;
+}
+
+.demo-info-btn1,
+.demo-info-btn2{
+    position: absolute;
+    width: 50%;
+    width: calc(50% - 10px);
+    width: -moz-calc(50% - 10px);
+    height: 20px;
+
+    font-family: 'Quicksand', sans-serif;
+    color: #000000;
+    font-size: 11px;
+    text-align: center;
+    font-weight: normal;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    top: calc(50% + 5px);
+    top: -moz-calc(50% + 5px);
+}
+
+.demo-info-btn1{
+    background-color: #A3A3A3;
+    left: 0px;
+}
+.demo-info-btn2{
+    background-color: #feb30c;
+    right: 0px;
 }

@@ -43,7 +43,7 @@ function prepareWindow(){
     }
 
     getE('instrucciones_inst').innerHTML = instrucciones_inst_txt
-    getE('instrucciones-gif').innerHTML = instrucciones_gif_txt
+    //getE('instrucciones-gif').innerHTML = instrucciones_gif_txt
 }
 
 

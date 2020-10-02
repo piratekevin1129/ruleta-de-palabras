@@ -59,7 +59,7 @@
                             <div class="palabra-input-line5"></div>
                             <div class="palabra-input-line6"></div>
                         </div>
-                        <input type="text" name="palabra-input" id="palabra-input" autocomplete="off" maxlength="100" onfocus="focusPalabra()" onblur="blurPalabra()" onkeyup="keyupPalabra(this)" />
+                        <input type="text" name="palabra-input" id="palabra-input" autocomplete="off" maxlength="100" onfocus="focusPalabra()" onblur="blurPalabra()" onkeyup="keyupPalabra(this)" placeholder="Tu respuesta" />
                     </div>
                     <div class="informaicon-buttons">
                         <button id="saltar-btn" class="saltar-btn-unlocked" onclick="saltarPalabra()">Saltar</button>
@@ -105,10 +105,13 @@
                             <div class="demo-ruleta-l4">D</div>
                             <div class="demo-ruleta-l5">E</div>
                             <div class="demo-ruleta-l6">F</div>
-                            <div class="demo-ruleta-l7">G</div>
                         </div>
                         <div class="demo-info">
-                            <
+                            <div class="demo-info-input">
+                                <p>palabra</p>
+                            </div>
+                            <div class="demo-info-btn1">saltar</div>
+                            <div class="demo-info-btn2">comprobar</div>
                         </div>
                     </div>
                     <p>Haz clic en <span>Comprobar</span> para verificar si la palabra es correcta, Si no sabes la palabra puedes dar clic en <span>Saltar</span> y responder más tarde.</p>
