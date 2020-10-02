@@ -9,7 +9,20 @@
     }
 
     /**********CONTENIDO AQUI************/
-
+    #comprobar-btn{
+		cursor: pointer;
+	}
+    .saltar-btn-unlocked{
+		cursor: pointer;
+	}
+	#comprobar-btn:hover{
+		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
+		background: #f19e01;
+	}
+	.saltar-btn-unlocked:hover{
+		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
+		background: #919191;
+	}
 	/************END CONTENT*************/
 
 	.modal-continue-btn:hover{
@@ -54,7 +67,98 @@
 	}
 	
 	/**********CONTENIDO AQUI************/
+	#rulette{/*rueda ruleta*/
+		width: 250px;
+		height: 250px;
+	}
+	.rulette-off{
+		left: 20px;
+	}
+	.rulette-on{
+		left: 50%;
+		left: calc(50% - 125px);
+		left: -moz-calc(50% - 125px);
+	}
+	.rulette-letra-icon{
+		width: 25px;
+		height: 25px;
+		
+		transform: translateX(-12.5px) translateY(-12.5px);
+		-webkit-transform: translateX(-12.5px) translateY(-12.5px);
+		-o-transform: translateX(-12.5px) translateY(-12.5px);
+	}
 
+	#informacion{
+		width: 300px;
+		width: calc(100% - (250px + 60px));
+		width: -moz-calc(100% - (250px + 60px));
+		
+		margin: 0px;
+		padding: 0px;
+		right: 10px;
+	}
+	#informacion-title{
+		margin-bottom: 10px;
+	}
+	.informaicon-buttons{
+		margin-top: 15px;
+	}
+	#comprobar-btn,#saltar-btn{
+		width: 120px;
+		height: 35px;
+	}
+	#comprobar-btn:hover{
+		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
+		background: #f19e01;
+	}
+	.saltar-btn-unlocked:hover{
+		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
+		background: #919191;
+	}
+	#comprobar-btn{
+		cursor: pointer;
+	}
+    .saltar-btn-unlocked{
+		cursor: pointer;
+	}
+	#comprobar-btn:hover{
+		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
+		background: #f19e01;
+	}
+	.saltar-btn-unlocked:hover{
+		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
+		background: #919191;
+	}
+
+	#tabla{
+		width: 300px;
+		width: calc(100% - (250px + 60px));
+		width: -moz-calc(100% - (250px + 60px));
+		
+		margin: 0px;
+		padding: 0px;
+		right: 10px;
+	}
+	#tabla-msg{
+		margin-bottom: 10px;
+	}
+	#tabla-stats{
+		max-height: 300px;
+	}
+	.tabla-stats-palabra-header{
+		height: 20px;
+	}
+	.tabla-stats-palabra-icon{
+		width: 25px;
+	}
+	.tabla-stats-palabra-letra{
+		width: 25px;
+	}
+	.tabla-stats-palabra-results{
+		width: auto;
+		width: calc(100% - 50px);
+		width: -moz-calc(100% - 50px);
+	}
 	/************END CONTENT*************/
 
 	#modal{

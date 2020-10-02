@@ -31,7 +31,7 @@
 .rulette-row{
 	position: relative;
 	width: 100%;
-	height: 300px;
+	height: 100%;
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
@@ -81,20 +81,7 @@
 	border-radius: 50%;
 	/*background-color: #D7EBFF;*/
 }
-/*#rulette-letter-parent::before{
-	content: "";
-	border-radius: 50%;
-	position: absolute;
-	width: 100%;
-	width: calc(100% - 2px);
-	width: -moz-calc(100% - 2px);
-	height: 100%;
-	height: calc(100% - 2px);
-	height: -moz-calc(100% - 2px);
-	background-color: #FFFFFF;
-	top: 1px;
-	left: 1px;
-}*/
+
 .rulette-letter-off{
 	transform: scale(0) rotate(350deg);
 	-webkit-transform: scale(0) rotate(350deg);
@@ -558,7 +545,6 @@
 	-webkit-transition: box-shadow 0.1s;
 }
 #comprobar-btn{
-	cursor: pointer;
 	background: #feb30c;
 	background: linear-gradient(to bottom, #feb30c, #f09c00);
 	background: -webkit-linear-gradient(to bottom, #feb30c, #f09c00);
@@ -573,23 +559,14 @@
 	background: -o-linear-gradient(to bottom, #AAAAAA, #9D9D9D);
 	background: -moz-linear-gradient(to bottom, #AAAAAA, #9D9D9D);
 }
-.saltar-btn-unlocked{
-	cursor: pointer;
-}
+
 .saltar-btn-locked{
 	filter: brightness(150%);
 	-webkit-filter: brightness(150%);
 	-o-filter: brightness(150%);
 	cursor: not-allowed;
 }
-#comprobar-btn:hover{
-	box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
-	background: #f19e01;
-}
-.saltar-btn-unlocked:hover{
-	box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
-	background: #919191;
-}
+
 
 /*************TABLA****************/
 #tabla{
@@ -829,7 +806,7 @@
 	padding: 0px;
 
 	font-family: 'Quicksand', sans-serif;
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: normal;
 	text-align: left;
 	line-height: normal;

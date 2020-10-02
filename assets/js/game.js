@@ -17,13 +17,14 @@ function unorderArray(lon){
 
 var game_width = 845
 var game_height = 507
+var canvas_width = 300
 var letras_ruleta = []
 var letras_ruleta_saltadas = []
 var letras_ruleta_aprobadas = []
 var letras_ruleta_reprobadas = []
 var letters_rulette = []
 var palabras_ruleta = []
-var radius_rulette = 300/2
+var radius_rulette = 0
 
 function d2R(degrees){
   var pi = Math.PI;
@@ -32,6 +33,9 @@ function d2R(degrees){
 
 var animacion_letra_entrada = null
 function setGame(){
+	canvas.width = canvas_width
+	canvas.height = canvas_width
+	radius_rulette = canvas_width/2
 	palabras_ruleta = global_data.palabras
 
 	var angulo = 360/palabras_ruleta.length

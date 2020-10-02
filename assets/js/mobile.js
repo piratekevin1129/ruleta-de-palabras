@@ -17,6 +17,7 @@ function prepareWindow(){
         actual_dimension = 2
         game_width = 710
         game_height = 426
+        canvas_width = 250
         
         window.top.postMessage({'completado': false, 'alto': game_height}, '*' );
     }else if(window.innerWidth>=530&&window.innerWidth<710){
