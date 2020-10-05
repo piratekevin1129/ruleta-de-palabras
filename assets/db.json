@@ -38,9 +38,9 @@
 		}
 	],
 	"titulo_final":"¡Felicitaciones!",
- 	"mensaje_final":"",
- 	"titulo_final_mal":"",
- 	"mensaje_final_mal":"",
+ 	"mensaje_final":"Has completado esta actividad",
+ 	"titulo_final_mal":"Demasiados errores!",
+ 	"mensaje_final_mal":"Se nota que no has estudiado el tema, te recomendamos repasarlo y realizar nuevamente la actividad",
 	"titulo_instrucciones":"¡Instrucciones!",
 	"mensaje_instrucciones":"Descubre el animal oculto",
 	"numero_intentos":3

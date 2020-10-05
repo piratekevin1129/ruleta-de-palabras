@@ -67,10 +67,8 @@
                 </div>
 
                 <div id="tabla" class="tabla-off">
-                    <p id="tabla-msg">
-                        Has completado esta actividad
-                        <span id="aciertos_txt"></span> - <span id="puntaje_txt"></span>
-                    </p> 
+                    <p id="tabla-msg"></p>
+                    <span id="aciertos_txt"></span> - <span id="puntaje_txt"></span> 
                     <br />
                     <div id="tabla-stats">
                         <!---->
@@ -81,11 +79,13 @@
 
         <div id="modal" class="modal-off">
             <div id="modal-msg">
-                <div id="modal-icon-msg" class="modal-icon-msg-error"></div>
-                <div id="modal-text-msg">
-                    <p>Lorem Ipsu</p>
-                    <button class="modal-continue-btn"></button>
+                <div id="modal-msg-content">
+                    <div id="modal-icon-msg" class="modal-icon-msg-error"></div>
+                    <div id="modal-text-msg">
+                        <p>Lorem Ipsu</p>
+                    </div>
                 </div>
+                <button id="modal-continue-btn"></button>
                 <div id="modal-close-msg" onclick="unsetModal()"></div>
             </div>
         </div>
@@ -118,12 +118,9 @@
                         </div>
                     </div>
                     <p>Haz clic en <span>Comprobar</span> para verificar si la palabra es correcta, Si no sabes la palabra puedes dar clic en <span>Saltar</span> y responder más tarde.</p>
-                    <!--<p>Tienes <span id="intentos_txt"></span> oportunidades.</p>
-                    <div class="instrucciones-starts">
-                        <div class="instrucciones-star"></div>
-                        <div class="instrucciones-star"></div>
-                        <div class="instrucciones-star"></div>
-                    </div>-->
+                    <p>Tienes <span id="intentos_txt"></span> oportunidades.</p>
+                    <div id="instrucciones-starts">
+                    </div>
                 </div>
             </div>
         </div>
@@ -159,9 +156,6 @@
                     </div>
                 </div>
                 <div id="tra_estrellas">
-                    <div class="tra_estrella tra_estrella_off"></div>
-                    <div class="tra_estrella tra_estrella_off"></div>
-                    <div class="tra_estrella tra_estrella_off"></div>
                 </div>
             </div>
         </div>
@@ -241,9 +235,22 @@ function initGame(){
     numero_intentos = global_data.numero_intentos
     getE('instrucciones_title').innerHTML = titulo_instrucciones
     getE('instrucciones_txt').innerHTML = mensaje_instrucciones
-    //getE('intentos_txt').innerHTML = numero_intentos
+    getE('intentos_txt').innerHTML = numero_intentos
 
     getE('instrucciones_txt').innerHTML = mensaje_instrucciones
+
+    //crear estrellas dependiendo de los intentos
+    for(i = 0;i<numero_intentos;i++){
+        //para el div de instrucciones
+        var s_i = document.createElement('div')
+        s_i.className = 'instrucciones-star'
+        getE('instrucciones-starts').appendChild(s_i)
+
+        //para el header
+        var s_h = document.createElement('div')
+        s_h.className = 'tra_estrella tra_estrella_off'
+        getE('tra_estrellas').appendChild(s_h)
+    }
     
     animacion_init = setTimeout(function(){
         clearTimeout(animacion_init)

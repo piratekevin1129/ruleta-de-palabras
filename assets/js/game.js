@@ -54,8 +54,6 @@ function setGame(){
 		getE('rulette-letras').appendChild(l)
 		letras_ruleta.push(l)
 	}
-
-	
 }
 
 function prepareGame(){
@@ -103,6 +101,7 @@ var letra_aleatoria = 0
 var terminado = false
 
 function resetRuleta(){
+	r = 0
 	rotacion = 0
 	aceleracion = 5
 	frame = 0
@@ -285,7 +284,12 @@ function comprobarPalabra(){
 
 			if(intentos==numero_intentos){
 				pararReloj()
-				setModal({msg:'<span>'+titulo_final_mal+'</span> '+mensaje_final_mal+'<br />Puedes hacer clic en el botón <span>Reiniciar</span> para jugar de nuevo',close:true})
+				setModal({
+					msg:'<span>'+titulo_final_mal+'</span> '+mensaje_final_mal+'<br />Puedes hacer clic en el botón <span>Reiniciar</span> para jugar de nuevo',
+					close:true,
+					continue:true,
+					action:'reloadGame'
+				})
 			}else{
 				continueRuleta(true)
 			}
@@ -303,7 +307,6 @@ function removeAcentos(str){
 }
 
 function continueRuleta(check){
-	console.log("continuar")
 	if(check){
 		if(!terminado){
 			if(letras_ruleta_aprobadas.length+letras_ruleta_reprobadas.length+letras_ruleta_saltadas.length==letras_ruleta.length){
@@ -384,9 +387,6 @@ function checkLetra(l){
 }
 
 function setFinal(){
-	console.log(letras_ruleta_aprobadas)
-	console.log(letras_ruleta_reprobadas)
-
 	getE('aciertos_txt').innerHTML = letras_ruleta_aprobadas.length+'/'+letras_ruleta_reprobadas.length
 	var resultado = (letras_ruleta_aprobadas.length*100)/letras_ruleta.length
 
@@ -484,12 +484,27 @@ function setModal(params){
 		document.getElementById('modal-close-msg').style.visibility = 'hidden'
 	}
 
-	var continue_btn = ''
+	
 	var msg_full = '<p>'+msg+'</p>'
 	if(params.continue!=null&&params.continue!=undefined){
-		continue_btn+='<button class="modal-continue-btn" onmouseover="overContinue()" onclick="'+params.action+'()">'+params.label+'</button>'
-		msg_full+=continue_btn
+		document.getElementById('modal-continue-btn').style.display = 'block'
+		
+	}else{
+		document.getElementById('modal-continue-btn').style.display = 'none'
 	}
+
+	if(params.action!=null&&params.action!=undefined){
+		document.getElementById('modal-continue-btn').setAttribute('onclick',params.action+'()')
+	}else{
+		document.getElementById('modal-continue-btn').setAttribute('onclick','unsetModal()')
+	}
+
+	if(params.label!=null&&params.action!=undefined){
+		document.getElementById('modal-continue-btn').innerHTML = params.label
+	}else{
+		document.getElementById('modal-continue-btn').innerHTML = 'Continuar'
+	}
+
 
 	document.getElementById('modal-text-msg').innerHTML = msg_full
 
@@ -542,9 +557,10 @@ function closeInstrucciones(){
 		
 		//underground_mp3.play()
 		setTimer()
+		i = 0
 		j = 0
+		k = 0
 		prepareGame()
-		
 	}
 	instrucciones.className = 'instrucciones-off'
 }
@@ -559,8 +575,49 @@ function getE(idname){
 	return document.getElementById(idname)
 }
 
+//reutilizar animacion_init para el cargador
 function reloadGame(){
+	//repetir juego sin actualizar
+	unsetModal()
+	cargador.className = 'cargador-on'
+	getE('rulette').className = 'rulette-out rulette-on'
+	getE('informacion').className = 'informacion-off'
 
+	//clearCanvas
+	ctx.clearRect(0,0,canvas.width,canvas.height)
+	getE('rulette-letras').innerHTML = ''
+
+	letras_ruleta = []
+	letras_ruleta_saltadas = []
+	letras_ruleta_aprobadas = []
+	letras_ruleta_reprobadas = []
+	letters_rulette = []
+	palabras_ruleta = []
+	radius_rulette = 0
+
+	saltar_btn.disabled = true
+	comprobar_btn.disabled = true
+	intentos = 0
+
+	//limpiar estrellas
+	var stars = getE('tra_estrellas').getElementsByClassName('tra_estrella')
+	for(i = 0;i<stars.length;i++){
+		stars[i].className = 'tra_estrella tra_estrella_off'
+	}
+
+	setGame()
+
+	animacion_init = setTimeout(function(){
+		clearTimeout(animacion_init)
+		animacion_init = null
+
+		cargador.className = 'cargador-off'
+		setTimer()
+		i = 0
+		j = 0
+		k = 0
+		prepareGame()
+	},1000)
 }
 
 function nextTema(){

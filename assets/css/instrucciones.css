@@ -148,7 +148,7 @@
     font-weight: normal;
     line-height: normal;
 }
-.instrucciones-starts{
+#instrucciones-starts{
     position: relative;
     box-sizing: border-box;
     display: flex;
