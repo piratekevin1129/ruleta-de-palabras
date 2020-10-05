@@ -1,41 +1,4 @@
-{
-	"palabras":[
-		{
-			"letra":"a",
-			"pista":"pica duro y hace miel",
-			"palabra":[
-				"abeja"
-			]
-		},
-		{
-			"letra":"b",
-			"pista":"tiene orejas largas y sirve de carga",
-			"palabra":[
-				"burro"
-			]
-		},
-		{
-			"letra":"c",
-			"pista":"vive en los pantanos, es verde e intimidante",
-			"palabra":[
-				"cocodrilo",
-				"caimán"
-			]
-		},
-		{
-			"letra":"d",
-			"pista":"viven en el mar y hacen maromas",
-			"palabra":[
-				"delfín"
-			]
-		},
-		{
-			"letra":"e",
-			"pista":"es el animal terrestre más grande",
-			"palabra":[
-				"elefante"
-			]
-		},
+,
 		{
 			"letra":"f",
 			"pista":"viven en lugares frios y aveces trabajan en los circos",
@@ -72,6 +35,13 @@
 			]
 		},
 		{
+			"letra":"k",
+			"pista":"habita en Australia y le gusta dormir mucho",
+			"palabra":[
+				"koala"
+			]
+		},
+		{
 			"letra":"l",
 			"pista":"Es considerado el rey de la selva",
 			"palabra":[
@@ -86,6 +56,13 @@
 			]
 		},
 		{
+			"letra":"n",
+			"pista":"habita en los rios y selvas, su pelaje es muy resbaladiso",
+			"palabra":[
+				"nutria"
+			]
+		},
+		{
 			"letra":"o",
 			"pista":"es salvaje, y habita en los bosques o el polo norte",
 			"palabra":[
@@ -97,6 +74,13 @@
 			"pista":"animal doméstico y considerado el mejor amigo del hombre",
 			"palabra":[
 				"perro"
+			]
+		},
+		{
+			"letra":"q",
+			"pista":"Es un ave muy escasa de encontrar y muy poco común",
+			"palabra":[
+				"quetzal"
 			]
 		},
 		{
@@ -122,10 +106,38 @@
 			]
 		},
 		{
+			"letra":"u",
+			"pista":"Es un animal de fantasía, tiene un cuerno en su cabeza y es familiar de los caballos",
+			"palabra":[
+				"unicornio"
+			]
+		},
+		{
 			"letra":"v",
 			"pista":"animal que da leche y hace muuuu",
 			"palabra":[
 				"vaca"
+			]
+		},
+		{
+			"letra":"w",
+			"pista":"Es un animal endémico de australia, muy tierno y a algunas personas lo domestican",
+			"palabra":[
+				"wombat"
+			]
+		},
+		{
+			"letra":"x",
+			"pista":"No es un animal, es un instrumento musical",
+			"palabra":[
+				"xilofono"
+			]
+		},
+		{
+			"letra":"y",
+			"pista":"Es la novia del caballo",
+			"palabra":[
+				"yegua"
 			]
 		},
 		{
@@ -135,12 +147,3 @@
 				"zorro"
 			]
 		}
-	],
-	"titulo_final":"¡Felicitaciones!",
- 	"mensaje_final":"",
- 	"titulo_final_mal":"",
- 	"mensaje_final_mal":"",
-	"titulo_instrucciones":"¡Instrucciones!",
-	"mensaje_instrucciones":"Descubre el animal oculto",
-	"numero_intentos":3
-}

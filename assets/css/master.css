@@ -55,14 +55,7 @@
 	transition: left 1s;
 	-webkit-transition: left 1s;
 }
-.rulette-off{
-	left: 30px;
-}
-.rulette-on{
-	left: 50%;
-	left: calc(50% - 150px);
-	left: -moz-calc(50% - 150px);
-}
+
 .rulette-out{
 	visibility: hidden;
 }
@@ -214,20 +207,7 @@
 	-webkit-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 }
-.informacion-off{
-	top: -50px;
-	opacity: 0;
-	visibility: hidden;
-	transition: top 0.4s, opacity 0.4s, visibility 0.4s;
-	-webkit-transition: top 0.4s, opacity 0.4s, visibility 0.4s;
-}
-.informacion-on{
-	top: 0px;
-	opacity: 1;
-	visibility: visible;
-	transition: top 0.4s, opacity 0.4s, visibility 0s;
-	-webkit-transition: top 0.4s, opacity 0.4s, visibility 0s;
-}
+
 
 #informacion-title{
 	display: block;
@@ -282,7 +262,7 @@
 
 	font-family: 'Quicksand', sans-serif;
 	font-size: 13px;
-	color: #404E67;
+	color: #C21B00;
 	text-align: left;
 	font-weight: normal;
 	line-height: normal;
@@ -567,7 +547,6 @@
 	cursor: not-allowed;
 }
 
-
 /*************TABLA****************/
 #tabla{
 	position: absolute;
@@ -610,6 +589,9 @@
 	font-weight: 500;
 	line-height: normal;
 	margin-bottom: 20px;
+}
+#tabla-msg{
+	font-weight: 700;
 }
 
 #tabla-stats{

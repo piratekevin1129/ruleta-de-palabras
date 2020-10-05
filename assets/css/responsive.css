@@ -9,6 +9,28 @@
     }
 
     /**********CONTENIDO AQUI************/
+    .rulette-off{
+		left: 30px;
+	}
+	.rulette-on{
+		left: 50%;
+		left: calc(50% - 150px);
+		left: -moz-calc(50% - 150px);
+	}
+	.informacion-off{
+		top: -50px;
+		opacity: 0;
+		visibility: hidden;
+		transition: top 0.4s, opacity 0.4s, visibility 0.4s;
+		-webkit-transition: top 0.4s, opacity 0.4s, visibility 0.4s;
+	}
+	.informacion-on{
+		top: 0px;
+		opacity: 1;
+		visibility: visible;
+		transition: top 0.4s, opacity 0.4s, visibility 0s;
+		-webkit-transition: top 0.4s, opacity 0.4s, visibility 0s;
+	}
     #comprobar-btn{
 		cursor: pointer;
 	}
@@ -23,6 +45,11 @@
 		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
 		background: #919191;
 	}
+
+	/************INSTRUCCIONES***********/
+	
+	/************************************/
+
 	/************END CONTENT*************/
 
 	.modal-continue-btn:hover{
@@ -87,6 +114,9 @@
 		-webkit-transform: translateX(-12.5px) translateY(-12.5px);
 		-o-transform: translateX(-12.5px) translateY(-12.5px);
 	}
+	.rulette-letra-icon p{
+		font-size: 14px;
+	}
 
 	#informacion{
 		width: 300px;
@@ -96,6 +126,20 @@
 		margin: 0px;
 		padding: 0px;
 		right: 10px;
+	}
+	.informacion-off{
+		top: -50px;
+		opacity: 0;
+		visibility: hidden;
+		transition: top 0.4s, opacity 0.4s, visibility 0.4s;
+		-webkit-transition: top 0.4s, opacity 0.4s, visibility 0.4s;
+	}
+	.informacion-on{
+		top: 0px;
+		opacity: 1;
+		visibility: visible;
+		transition: top 0.4s, opacity 0.4s, visibility 0s;
+		-webkit-transition: top 0.4s, opacity 0.4s, visibility 0s;
 	}
 	#informacion-title{
 		margin-bottom: 10px;
@@ -153,6 +197,7 @@
 	}
 	.tabla-stats-palabra-letra{
 		width: 25px;
+		font-family: 14px;
 	}
 	.tabla-stats-palabra-results{
 		width: auto;
@@ -160,6 +205,10 @@
 		width: -moz-calc(100% - 50px);
 	}
 	/************END CONTENT*************/
+
+	/************INSTRUCCIONES***********/
+	
+	/************************************/
 
 	#modal{
 	    height: 396px;
@@ -219,8 +268,149 @@
 	}
 
 	/**********CONTENIDO AQUI************/
-	
+	#rulette{/*rueda ruleta*/
+		position: relative;
+		transition: none;
+		-webkit-transition: none;
+		margin: 0px auto;
+		margin-top: 30px;
+	}
+	.rulette-off{
+		
+	}
+	.rulette-on{
+		
+	}
+
+
+	#informacion{
+		position: relative;
+		width: 100%;
+		width: calc(100% - 30px);
+		width: -moz-calc(100% - 30px);
+		
+		margin: 0px auto;
+		margin-top: 30px;
+		
+		top: initial;
+		right: initial;
+		transform: none;
+		-webkit-transform: none;
+		-o-transform: none;
+	}
+	.informacion-off{
+		top: 20px;
+		opacity: 0;
+		visibility: hidden;
+		transition: top 0.4s, opacity 0.4s, visibility 0.4s;
+		-webkit-transition: top 0.4s, opacity 0.4s, visibility 0.4s;
+	}
+	.informacion-on{
+		top: 0px;
+		opacity: 1;
+		visibility: visible;
+		transition: top 0.4s, opacity 0.4s, visibility 0s;
+		-webkit-transition: top 0.4s, opacity 0.4s, visibility 0s;
+	}
+	#informacion-title{
+		margin-bottom: 10px;
+	}
+	.informaicon-buttons{
+		margin-top: 15px;
+	}
+	#comprobar-btn,#saltar-btn{
+		width: 120px;
+		height: 35px;
+	}
+	#comprobar-btn:hover{
+		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
+		background: #f19e01;
+	}
+	.saltar-btn-unlocked:hover{
+		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
+		background: #919191;
+	}
+	#comprobar-btn{
+		cursor: pointer;
+	}
+    .saltar-btn-unlocked{
+		cursor: pointer;
+	}
+	#comprobar-btn:hover{
+		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
+		background: #f19e01;
+	}
+	.saltar-btn-unlocked:hover{
+		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
+		background: #919191;
+	}
+
+	#tabla{
+		position: relative;
+		width: 100%;
+		width: calc(100% - 30px);
+		width: -moz-calc(100% - 30px);
+		
+		margin: 0px auto;
+		margin-top: 30px;
+		top: initial;
+		right: initial;
+		transform: none;
+		-webkit-transform: none;
+		-o-transform: none;
+	}
+
+	#tabla-msg{
+		margin-bottom: 10px;
+	}
+	#tabla-stats{
+		max-height: 300px;
+	}
+	.tabla-stats-palabra-header{
+		height: 20px;
+	}
+	.tabla-stats-palabra-icon{
+		width: 25px;
+	}
+	.tabla-stats-palabra-letra{
+		width: 25px;
+		font-family: 14px;
+	}
+	.tabla-stats-palabra-results{
+		width: auto;
+		width: calc(100% - 50px);
+		width: -moz-calc(100% - 50px);
+	}
 	/************END CONTENT*************/
+
+	/************INSTRUCCIONES***********/
+	.demo-ruleta{
+		animation: none;
+		animation: unset;
+		-webkit-animation: none;
+		-webkit-animation: unset;
+	}
+	.demo-info{
+	    position: absolute;
+	    width: 100%;
+	    width: calc(100% - 160px);
+	    width: -moz-calc(100% - 160px);
+	    height: 150px;
+	    margin: 0px;
+	    padding: 0px;
+	    top: 120px;
+	    left: 50%;
+
+	    animation-name: animacion-ruleta-demo2;
+	    animation-duration: 6s;
+	    animation-timing-function: linear;
+	    animation-iteration-count: infinite;
+	    -webkit-animation-name: animacion-ruleta-demo2;
+	    -webkit-animation-duration: 6s;
+	    -webkit-animation-timing-function: linear;
+	    -webkit-animation-iteration-count: infinite;
+	}
+	/************************************/
 	
 	#modal{
 	    height: 560px;

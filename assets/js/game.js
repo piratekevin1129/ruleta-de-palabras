@@ -382,6 +382,13 @@ function checkLetra(l){
 }
 
 function setFinal(){
+	console.log(letras_ruleta_aprobadas)
+	console.log(letras_ruleta_reprobadas)
+
+	getE('aciertos_txt').innerHTML = letras_ruleta_aprobadas.length+'/'+letras_ruleta_reprobadas.length
+	var resultado = (letras_ruleta_aprobadas.length*100)/letras_ruleta.length
+
+	getE('puntaje_txt').innerHTML = String(Math.floor(resultado*10)/10)+'%'
 	pararReloj()
 
 	//fill tabla
