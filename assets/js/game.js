@@ -566,7 +566,6 @@ function closeInstrucciones(){
 }
 
 var first_instrucciones = true
-
 function setTimer(){
 	iniciarReloj()
 }
@@ -578,7 +577,24 @@ function getE(idname){
 //reutilizar animacion_init para el cargador
 function reloadGame(){
 	//repetir juego sin actualizar
+	ruleta_effect.pause()
+	clearInterval(animacion_letra_entrada)
+	clearInterval(animacion_ruleta)
+	clearTimeout(animacion_ruleta_start)
+	terminado = false
+	clearTimeout(animacion_entrada)
+	clearInterval(animacion_ruleta_sound)
+	clearTimeout(animacion_modal_delay)
+	clearTimeout(animacion_modal_autoclose)
+
+	//remover animaciones
+	clearTimeout(animacion_init)
+	animacion_init = null
+
 	unsetModal()
+	instrucciones.className = 'instrucciones-off'
+	first_instrucciones = false
+
 	cargador.className = 'cargador-on'
 	getE('rulette').className = 'rulette-out rulette-on'
 	getE('informacion').className = 'informacion-off'

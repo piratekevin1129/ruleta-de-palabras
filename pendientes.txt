@@ -1,1 +1,2 @@
 tiempo record dependiendo de los intentos
+guardar reporte de los intentos
