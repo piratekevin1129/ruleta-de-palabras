@@ -24,6 +24,7 @@ function prepareWindow(){
         actual_dimension = 3
         game_width = 530
         game_height = 600
+        canvas_width = 250
         //ismobile = true
         isresponsive = true
        
@@ -32,6 +33,7 @@ function prepareWindow(){
         actual_dimension = 4
         game_width = window.innerWidth
         game_height = 700
+        canvas_width = 250
         //ismobile = true
         isresponsive = true
 

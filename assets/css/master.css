@@ -199,10 +199,8 @@
 	width: calc(100% - (300px + 90px));
 	width: -moz-calc(100% - (300px + 90px));
 	
-	margin: 0px;
 	padding: 0px;
 	right: 30px;
-	top: 50%;
 	transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
 	-o-transform: translateY(-50%);

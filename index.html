@@ -69,7 +69,7 @@
                 <div id="tabla" class="tabla-off">
                     <p id="tabla-msg">
                         Has completado esta actividad
-                        <span id="aciertos_txt"></span>, <span id="puntaje_txt"></span>
+                        <span id="aciertos_txt"></span> - <span id="puntaje_txt"></span>
                     </p> 
                     <br />
                     <div id="tabla-stats">
@@ -183,13 +183,14 @@ prepareWindow()
 /*var drag_mp3 = null
 var incorrect_mp3 = null
 var remove_mp3 = null
-var victoria_mp3 = null
+
 var button_mp3 = null*/
 var correcto_mp3 = null
 var incorrecto_mp3 = null
 var over_letra_mp3 = null
 var over_letra_mp4 = null
 var ruleta_effect = null
+var victoria_mp3 = null
 
 var global_data = null
 window.onload = function(){
@@ -206,12 +207,8 @@ window.onload = function(){
         correcto_mp3 = data
         loadAudio({src:'assets/media/ruleta_background.mp3',callBack:function(data){
         ruleta_effect = data
-        /*loadAudio({src:'assets/media/victoria.mp3',callBack:function(data){
+        loadAudio({src:'assets/media/victoria.mp3',callBack:function(data){
         victoria_mp3 = data
-        loadAudio({src:'assets/media/button.mp3',callBack:function(data){
-        button_mp3 = data
-        loadAudio({src:'assets/media/over.mp3',callBack:function(data){
-        over_mp3 = data*/
         
             //initScorm()
 
@@ -220,6 +217,7 @@ window.onload = function(){
 
         /*}})
         }})*/
+        }})
         }})
         }})
         }})

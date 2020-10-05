@@ -282,12 +282,11 @@ function comprobarPalabra(){
 			stars[intentos].classList.add('tra_estrella_on')
 			
 			intentos++
-			$("html, body").animate({ scrollTop: $('#tra_body').offset().top }, 500);
 
 			if(intentos==numero_intentos){
 				pararReloj()
 				setModal({msg:'<span>'+titulo_final_mal+'</span> '+mensaje_final_mal+'<br />Puedes hacer clic en el botón <span>Reiniciar</span> para jugar de nuevo',close:true})
-			}{
+			}else{
 				continueRuleta(true)
 			}
 		}
@@ -304,6 +303,7 @@ function removeAcentos(str){
 }
 
 function continueRuleta(check){
+	console.log("continuar")
 	if(check){
 		if(!terminado){
 			if(letras_ruleta_aprobadas.length+letras_ruleta_reprobadas.length+letras_ruleta_saltadas.length==letras_ruleta.length){
@@ -319,6 +319,8 @@ function continueRuleta(check){
 	}else{	
 		getE('rulette').className = "rulette-on"
 	}
+
+	$("html, body").animate({ scrollTop: $('#tra_body').offset().top }, 500);
 
 	animacion_entrada = setTimeout(function(){
 		clearTimeout(animacion_entrada)
@@ -491,7 +493,6 @@ function setModal(params){
 
 	document.getElementById('modal-text-msg').innerHTML = msg_full
 
-	
 	victoria_mp3.play()
 
 	if(params.delay!=null&&params.delay!=undefined){
